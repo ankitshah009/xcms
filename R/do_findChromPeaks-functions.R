@@ -786,6 +786,9 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
     minCentroids <- minPtsAboveBaseLine
     scRangeTol <-  maxDescOutlier <- floor(minPeakWidth / 2)
     scanrange <- c(1, length(scantime))
+    px<- "This is minpeakWidth value =  "
+    print(paste(px, minPeakWidth))
+    browser()
 
     ## If no ROIs are supplied then search for them.
     if (length(roiList) == 0) {
