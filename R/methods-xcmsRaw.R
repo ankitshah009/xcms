@@ -498,7 +498,8 @@ setMethod("findPeaks.centWave", "xcmsRaw", function(object, ppm=25,
         message("Provided scanrange was adjusted to ", scanrange)
     }
     object <- object[scanrange[1]:scanrange[2]]
-
+    print(object@env$mz)
+    print(object@env$intensity)
     vps <- diff(c(object@scanindex, length(object@env$mz)))
     res <- do_findChromPeaks_centWave(mz = object@env$mz,
                                       int = object@env$intensity,
