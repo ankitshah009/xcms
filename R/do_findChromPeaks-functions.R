@@ -758,7 +758,10 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 
     ## Peak width: seconds to scales
     scalerange <- round((peakwidth / mean(diff(scantime))) / 2)
-
+    px <- "The scale range is "
+    print(paste(px,scalerange))
+    px <- "The scantime is "
+    print(paste(px,scantime))
     if (length(z <- which(scalerange == 0)))
         scalerange <- scalerange[-z]
     if (length(scalerange) < 1) {
@@ -788,7 +791,9 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
     scanrange <- c(1, length(scantime))
     px<- "This is minpeakWidth value =  "
     print(paste(px, minPeakWidth))
-    browser()
+    print(scales)
+    
+    #browser()
 
     ## If no ROIs are supplied then search for them.
     if (length(roiList) == 0) {
