@@ -54,7 +54,7 @@ findChromPeaks_Spectrum_list <- function(x, method = "centWave", param, rt) {
                                   "MSW", "centWaveWithPredIsoROIs"))
     method <- paste0("do_findChromPeaks_", method)
     print(method)
-    stop("exit the code")
+    #stop("exit the code")
     if (method == "do_findChromPeaks_MSW")
         method <- "do_findPeaks_MSW"
     if (method == "do_findChromPeaks_matchedFilter") {
