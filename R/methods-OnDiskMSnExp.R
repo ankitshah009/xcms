@@ -73,7 +73,7 @@ setMethod("findChromPeaks",
                                     fcol = c(MSnbase:::.MSnExpReqFvarLabels,
                                              "centroided")), msLevel. = msLevel)
 	      temppp <- "Value of the object mslevel is "
-	      print(paste(temppp,object_mslevel)
+	      print(paste(temppp,object_mslevel))
               if (length(object_mslevel) == 0)
                   stop("No MS level ", msLevel, " spectra present to perform ",
                        "peak detection", call. = FALSE)
