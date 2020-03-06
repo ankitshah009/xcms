@@ -143,7 +143,35 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                                        roiScales = NULL,
                                        sleep = 0) {
     if (getOption("originalCentWave", default = TRUE)) {
+    	print("Running the centwave original algorithm")
         ## message("DEBUG: using original centWave.")
+	nnn <- "mz valuez are" 
+	print(nnn)
+	print(mz)
+	nnn <- "int"
+	print(nnn)
+	print(int)
+	nnn <- "scantime"
+	print(nnn)
+	print(scantime)
+	nnn <- "valsPerSpect"
+	print(nnn)
+	print(valsPerSpect)
+	nnn <- "ppm"
+	print(nnn)
+	print(ppm)
+	nnn <- "peakwidth"
+	print(nnn)
+	print(peakwidth)
+	nnn <- "snthresh"
+	print(nnn)
+	print(snthresh)
+	nnn <-"prefilter"
+	print(nnn)
+	print(prefilter)
+	nnn <- "noise"
+	print(nnn)
+	print(noise)
         .centWave_orig(mz = mz, int = int, scantime = scantime,
                        valsPerSpect = valsPerSpect, ppm = ppm, peakwidth = peakwidth,
                        snthresh = snthresh, prefilter = prefilter,
@@ -154,6 +182,34 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                        roiScales = roiScales, sleep = sleep)
     } else {
         ## message("DEBUG: using modified centWave.")
+	print("Running the new centwave algorithm")
+	nnn <- "mz valuez are" 
+	print(nnn)
+	print(mz)
+	nnn <- "int"
+	print(nnn)
+	print(int)
+	nnn <- "scantime"
+	print(nnn)
+	print(scantime)
+	nnn <- "valsPerSpect"
+	print(nnn)
+	print(valsPerSpect)
+	nnn <- "ppm"
+	print(nnn)
+	print(ppm)
+	nnn <- "peakwidth"
+	print(nnn)
+	print(peakwidth)
+	nnn <- "snthresh"
+	print(nnn)
+	print(snthresh)
+	nnn <-"prefilter"
+	print(nnn)
+	print(prefilter)
+	nnn <- "noise"
+	print(nnn)
+	print(noise)
         .centWave_new(mz = mz, int = int, scantime = scantime,
                       valsPerSpect = valsPerSpect, ppm = ppm, peakwidth = peakwidth,
                       snthresh = snthresh, prefilter = prefilter,

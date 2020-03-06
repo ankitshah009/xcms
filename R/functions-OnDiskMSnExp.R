@@ -74,9 +74,13 @@ findChromPeaks_Spectrum_list <- function(x, method = "centWave", param, rt) {
     if (is.unsorted(rt))
         stop("Spectra are not ordered by retention time!")
     mzs <- lapply(x, mz)
-    print(mzs)
-    browser()
+    #print(mzs)
+    ### these are the mz values - for each scan the individual mz points which are displayed. 
+    #browser()
     vals_per_spect <- lengths(mzs, FALSE)
+    ### this should ideally be teh length of the mz values - need to figure out what this is. 
+    vallll <- "vals per spectra value "
+    print(vallll)
     print(vals_per_spect)
     if (any(vals_per_spect == 0))
         warning("Found empty spectra. Please run 'filterEmptySpectra' first.",
@@ -89,10 +93,10 @@ findChromPeaks_Spectrum_list <- function(x, method = "centWave", param, rt) {
                               valsPerSpect = vals_per_spect,
                               scantime = rt), as(param, "list")))
     ## Ensure that we call the garbage collector to eventually clean unused stuff
-    rm(mzs)
-    rm(x)
-    rm(rt)
-    gc()
+    #rm(mzs)
+    #rm(x)
+    #rm(rt)
+    #gc()
     list(peaks = res, date = procDat)
 }
 
