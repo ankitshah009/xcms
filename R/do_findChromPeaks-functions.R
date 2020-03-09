@@ -270,6 +270,12 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                       "scpos", "scmin", "scmax", "lmin", "lmax")
 
     ## Peak width: seconds to scales
+    nnn <- "Peak width is "
+    print(nnn)
+    print(peakwidth)
+    nnn <- "Scan time is "
+    print(nnn)
+    print(scantime)
     scalerange <- round((peakwidth / mean(diff(scantime))) / 2)
 
     if (length(z <- which(scalerange == 0)))
@@ -291,14 +297,31 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
         scales <- seq(from = scalerange[1], to = scalerange[2], by = 2)
     else
         scales <- scalerange
-
+    nnn <- "Value of the scales is "
+    print(nnn)
+    print(scales)
     minPeakWidth <-  scales[1]
+    nnn <- "MinPeakWidth is "
+    print(nnn)
+    print(minPeakWidth)
     noiserange <- c(minPeakWidth * 3, max(scales) * 3)
+    nnn <- "noiserange is "
+    print(nnn)
+    print(noiserange)
     maxGaussOverlap <- 0.5
     minPtsAboveBaseLine <- max(4, minPeakWidth - 2)
     minCentroids <- minPtsAboveBaseLine
+    nnn <- "minCentroids is "
+    print(nnn)
+    print(minCentroids)
     scRangeTol <-  maxDescOutlier <- floor(minPeakWidth / 2)
+    nnn <- "ScRangeTolerance is "
+    print(nnn)
+    print(scRangeTol)
     scanrange <- c(1, length(scantime))
+    nnn <- "Scan range is "
+    print(nnn)
+    print(scanrange)
 
     ## If no ROIs are supplied then search for them.
     if (length(roiList) == 0) {
@@ -322,6 +345,10 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                                      as.integer(prefilter),
                                      as.integer(noise),
                                      PACKAGE ='xcms' )
+		    nnn <- "ROI LIST IS -First function "
+		    print(nnn)
+		    print(roiList)
+
                 )
             },
             error = function(e){
@@ -362,7 +389,10 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                                       as.integer(prefilter),
                                       as.integer(noise),
                                       PACKAGE ='xcms' )
-                )
+		    nnn <- "ROI LIST IS "
+		    print(nnn)
+		    print(roiList)
+                )   
             }
         )
         message("OK")
@@ -401,19 +431,39 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
         ##     lp <- perc;
         ## }
         ## flush.console()
-
+        
         feat <- roiList[[f]]
+	nnn <- "Feature is "
+	print(nnn)
+	print(feat)
+
         N <- feat$scmax - feat$scmin + 1
+	print(N)
         peaks <- peakinfo <- NULL
         mzrange <- c(feat$mzmin, feat$mzmax)
+	nnn <- "mz range is "
+	print(nnn)
+	print(mzrange)
         sccenter <- feat$scmin[1] + floor(N/2) - 1
+	nnn <- "sccenter is "
+	print(nnn)
+	print(sccenter)
         scrange <- c(feat$scmin, feat$scmax)
+	nnn <- "scrange is "
+	print(nnn)
+	print(scrange)
         ## scrange + noiserange, used for baseline detection and wavelet analysis
         sr <- c(max(scanrange[1], scrange[1] - max(noiserange)),
                 min(scanrange[2], scrange[2] + max(noiserange)))
+	nnn <- "sr is "
+	print(nnn)
+	print(sr)
         eic <- .Call("getEIC", mz, int, scanindex, as.double(mzrange),
                      as.integer(sr), as.integer(length(scanindex)),
                      PACKAGE = "xcms")
+	nnn <- "EIC is "
+	print(nnn)
+	print(eic)
         ## eic <- rawEIC(object,mzrange=mzrange,scanrange=sr)
         d <- eic$intensity
         td <- sr[1]:sr[2]
