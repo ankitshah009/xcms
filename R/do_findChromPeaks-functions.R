@@ -345,11 +345,11 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                                      as.integer(prefilter),
                                      as.integer(noise),
                                      PACKAGE ='xcms' )
-		    nnn <- "ROI LIST IS -First function "
-		    print(nnn)
-		    print(roiList)
 
                 )
+		nnn <- "ROI LIST IS First function "
+		print(nnn)
+		print(tmp)
             },
             error = function(e){
                 if (grepl("m/z sort assumption violated !", e$message)) {
@@ -389,10 +389,10 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                                       as.integer(prefilter),
                                       as.integer(noise),
                                       PACKAGE ='xcms' )
-		    nnn <- "ROI LIST IS "
-		    print(nnn)
-		    print(roiList)
                 )   
+		nnn <- "ROI LIST IS "
+		print(nnn)
+		print(tmp)
             }
         )
         message("OK")
