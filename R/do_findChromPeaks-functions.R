@@ -142,36 +142,46 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                                        firstBaselineCheck = TRUE,
                                        roiScales = NULL,
                                        sleep = 0) {
+    ll <- list()
     if (getOption("originalCentWave", default = TRUE)) {
     	print("Running the centwave original algorithm")
         ## message("DEBUG: using original centWave.")
 	nnn <- "mz valuez are" 
 	print(nnn)
-	print(mz)
+	print(mz[1:1000])
+	ll[["mz"]] <- mz
 	nnn <- "int"
 	print(nnn)
-	print(int)
+	print(int[1:1000])
+	ll[["int"]] <- int
 	nnn <- "scantime"
 	print(nnn)
-	print(scantime)
+	print(scantime[1:1000])
+	ll[["scantime"]] <- scantime
 	nnn <- "valsPerSpect"
 	print(nnn)
 	print(valsPerSpect)
+	ll[["valsPerSpect"]] <- valsPerSpect
 	nnn <- "ppm"
 	print(nnn)
 	print(ppm)
+	ll[["ppm"]] <- ppm
 	nnn <- "peakwidth"
 	print(nnn)
 	print(peakwidth)
+	ll[["peakwidth"]] <- peakwidth
 	nnn <- "snthresh"
 	print(nnn)
 	print(snthresh)
+	ll[["snthresh"]] <- snthresh
 	nnn <-"prefilter"
 	print(nnn)
 	print(prefilter)
+	ll[["prefilter"]] <- prefilter
 	nnn <- "noise"
 	print(nnn)
 	print(noise)
+	ll[["noise"]] <- noise
         .centWave_orig(mz = mz, int = int, scantime = scantime,
                        valsPerSpect = valsPerSpect, ppm = ppm, peakwidth = peakwidth,
                        snthresh = snthresh, prefilter = prefilter,
@@ -179,37 +189,46 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                        mzdiff = mzdiff, fitgauss = fitgauss, noise = noise,
                        verboseColumns = verboseColumns, roiList = roiList,
                        firstBaselineCheck = firstBaselineCheck,
-                       roiScales = roiScales, sleep = sleep)
+                       roiScales = roiScales, sleep = sleep, ll = ll)
     } else {
         ## message("DEBUG: using modified centWave.")
 	print("Running the new centwave algorithm")
 	nnn <- "mz valuez are" 
 	print(nnn)
-	print(mz)
+	print(mz[1:1000])
+	ll[["mznew"]] <- mz
 	nnn <- "int"
 	print(nnn)
-	print(int)
+	print(int[1:1000])
+	ll[["intnew"]] <- int
 	nnn <- "scantime"
 	print(nnn)
-	print(scantime)
+	print(scantime[1:1000])
+	ll[["scantimenew"]] <- scantime
 	nnn <- "valsPerSpect"
 	print(nnn)
 	print(valsPerSpect)
+	ll[["valsPerSpectnew"]] <- valsPerSpect
 	nnn <- "ppm"
 	print(nnn)
 	print(ppm)
+	ll[["ppm"]] <- ppm
 	nnn <- "peakwidth"
 	print(nnn)
 	print(peakwidth)
+	ll[["peakwidthnew"]] <- peakwidth
 	nnn <- "snthresh"
 	print(nnn)
 	print(snthresh)
+	ll[["snthreshnew"]] <- snthresh
 	nnn <-"prefilter"
 	print(nnn)
 	print(prefilter)
+	ll[["prefilternew"]] <- prefilter
 	nnn <- "noise"
 	print(nnn)
 	print(noise)
+	ll[["noisenew"]] <- noise
         .centWave_new(mz = mz, int = int, scantime = scantime,
                       valsPerSpect = valsPerSpect, ppm = ppm, peakwidth = peakwidth,
                       snthresh = snthresh, prefilter = prefilter,
@@ -217,12 +236,12 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                       mzdiff = mzdiff, fitgauss = fitgauss, noise = noise,
                       verboseColumns = verboseColumns, roiList = roiList,
                       firstBaselineCheck = firstBaselineCheck,
-                      roiScales = roiScales, sleep = sleep)
+                      roiScales = roiScales, sleep = sleep, ll=ll)
     }
 }
 ############################################################
 ## ORIGINAL code from xcms_1.49.7
-.centWave_orig <- function(mz, int, scantime, valsPerSpect,
+.centWave_orig <- function(mz, int, scantime, valsPerSpect, ll,
                            ppm = 25, peakwidth = c(20,50), snthresh = 10,
                            prefilter = c(3,100), mzCenterFun = "wMean",
                            integrate = 1, mzdiff = -0.001, fitgauss = FALSE,
@@ -300,28 +319,34 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
     nnn <- "Value of the scales is "
     print(nnn)
     print(scales)
+    ll[["scales"]] <- scales
     minPeakWidth <-  scales[1]
     nnn <- "MinPeakWidth is "
     print(nnn)
     print(minPeakWidth)
+    ll[["minPeakWidth"]] <- minPeakWidth
     noiserange <- c(minPeakWidth * 3, max(scales) * 3)
     nnn <- "noiserange is "
     print(nnn)
     print(noiserange)
+    ll[["noiserange"]] <- noiserange
     maxGaussOverlap <- 0.5
     minPtsAboveBaseLine <- max(4, minPeakWidth - 2)
     minCentroids <- minPtsAboveBaseLine
     nnn <- "minCentroids is "
     print(nnn)
     print(minCentroids)
+    ll[["minCentroids"]] <- minCentroids
     scRangeTol <-  maxDescOutlier <- floor(minPeakWidth / 2)
     nnn <- "ScRangeTolerance is "
     print(nnn)
     print(scRangeTol)
+    ll[["scRangeTol"]] <- scRangeTol
     scanrange <- c(1, length(scantime))
     nnn <- "Scan range is "
     print(nnn)
     print(scanrange)
+    ll[["scanrange"]] <- scanrange
 
     ## If no ROIs are supplied then search for them.
     if (length(roiList) == 0) {
@@ -347,9 +372,6 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                                      PACKAGE ='xcms' )
 
                 )
-		nnn <- "ROI LIST IS First function "
-		print(nnn)
-		print(tmp)
             },
             error = function(e){
                 if (grepl("m/z sort assumption violated !", e$message)) {
@@ -395,6 +417,11 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 		print(tmp)
             }
         )
+	nnn <- "ROI LIST IS First function "
+	print(nnn)
+	print(roiList)
+	ll[["roiList"]] <- roiList
+
         message("OK")
         ## ROI.list <- findmzROI(object,scanrange=scanrange,dev=ppm * 1e-6,minCentroids=minCentroids, prefilter=prefilter, noise=noise)
         if (length(roiList) == 0) {
@@ -410,6 +437,10 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
             return(invisible(nopeaks))
         }
     }
+
+
+
+    save(ll, file="ll.RData")
 
     ## Second stage: process the ROIs
     peaklist <- list()
@@ -818,7 +849,7 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 ## o The joinOverlappingPeaks is still calculated using the variable "d" which
 ##   contains all intensities from the ROI - might actually not be too bad
 ##   though.
-.centWave_new <- function(mz, int, scantime, valsPerSpect,
+.centWave_new <- function(mz, int, scantime, valsPerSpect, ll, 
                           ppm = 25, peakwidth = c(20,50), snthresh = 10,
                           prefilter = c(3,100), mzCenterFun = "wMean",
                           integrate = 1, mzdiff = -0.001, fitgauss = FALSE,
