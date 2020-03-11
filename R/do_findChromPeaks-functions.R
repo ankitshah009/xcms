@@ -441,6 +441,7 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 
 
     saveRDS(ll[["mz"]], file="ll.rds")
+    saveRDS(ll[["roiList"]], file="ll_roi.rds")
 
     ## Second stage: process the ROIs
     peaklist <- list()
