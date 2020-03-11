@@ -446,7 +446,7 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
     roidf=as.data.frame(ll[["roiList"]])
     write.csv(roidf,'ll_roi.csv')
     roidf=t(data.frame(sapply(ll[["roiList"]],c)))
-    write.csv(roidf,'ll_roi.csv')
+    write.csv(roidf,'ll_roi.txt')
 
     ## Second stage: process the ROIs
     peaklist <- list()
