@@ -414,12 +414,12 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
                 )   
 		nnn <- "ROI LIST IS "
 		print(nnn)
-		print(tmp)
+		print(length(tmp))
             }
         )
 	nnn <- "ROI LIST IS First function "
 	print(nnn)
-	print(roiList)
+	print(length(roiList))
 	ll[["roiList"]] <- roiList
 
         message("OK")
