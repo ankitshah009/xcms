@@ -471,36 +471,36 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
         
         feat <- roiList[[f]]
 	nnn <- "Feature is "
-	print(nnn)
-	print(feat)
+	#print(nnn)
+	#print(feat)
 
         N <- feat$scmax - feat$scmin + 1
 	print(N)
         peaks <- peakinfo <- NULL
         mzrange <- c(feat$mzmin, feat$mzmax)
 	nnn <- "mz range is "
-	print(nnn)
-	print(mzrange)
+	#print(nnn)
+	#print(mzrange)
         sccenter <- feat$scmin[1] + floor(N/2) - 1
 	nnn <- "sccenter is "
-	print(nnn)
-	print(sccenter)
+	#print(nnn)
+	#print(sccenter)
         scrange <- c(feat$scmin, feat$scmax)
 	nnn <- "scrange is "
-	print(nnn)
-	print(scrange)
+	#print(nnn)
+	#print(scrange)
         ## scrange + noiserange, used for baseline detection and wavelet analysis
         sr <- c(max(scanrange[1], scrange[1] - max(noiserange)),
                 min(scanrange[2], scrange[2] + max(noiserange)))
 	nnn <- "sr is "
-	print(nnn)
-	print(sr)
+	#print(nnn)
+	#print(sr)
         eic <- .Call("getEIC", mz, int, scanindex, as.double(mzrange),
                      as.integer(sr), as.integer(length(scanindex)),
                      PACKAGE = "xcms")
 	nnn <- "EIC is "
-	print(nnn)
-	print(eic)
+	#print(nnn)
+	#print(eic)
         ## eic <- rawEIC(object,mzrange=mzrange,scanrange=sr)
         d <- eic$intensity
         td <- sr[1]:sr[2]
