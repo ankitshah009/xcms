@@ -148,15 +148,15 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
         ## message("DEBUG: using original centWave.")
 	nnn <- "mz valuez are" 
 	print(nnn)
-	print(mz[1:1000])
+	#print(mz[1:1000])
 	ll[["mz"]] <- mz
 	nnn <- "int"
 	print(nnn)
-	print(int[1:1000])
+	#print(int[1:1000])
 	ll[["int"]] <- int
 	nnn <- "scantime"
 	print(nnn)
-	print(scantime[1:1000])
+	#print(scantime[1:1000])
 	ll[["scantime"]] <- scantime
 	nnn <- "valsPerSpect"
 	print(nnn)
@@ -195,15 +195,15 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 	print("Running the new centwave algorithm")
 	nnn <- "mz valuez are" 
 	print(nnn)
-	print(mz[1:1000])
+	#print(mz[1:1000])
 	ll[["mznew"]] <- mz
 	nnn <- "int"
 	print(nnn)
-	print(int[1:1000])
+	#print(int[1:1000])
 	ll[["intnew"]] <- int
 	nnn <- "scantime"
 	print(nnn)
-	print(scantime[1:1000])
+	#print(scantime[1:1000])
 	ll[["scantimenew"]] <- scantime
 	nnn <- "valsPerSpect"
 	print(nnn)
