@@ -475,7 +475,7 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 	#print(feat)
 
         N <- feat$scmax - feat$scmin + 1
-	print(N)
+	#print(N)
         peaks <- peakinfo <- NULL
         mzrange <- c(feat$mzmin, feat$mzmax)
 	nnn <- "mz range is "
