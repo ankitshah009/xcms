@@ -160,27 +160,27 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 	ll[["scantime"]] <- scantime
 	nnn <- "valsPerSpect"
 	print(nnn)
-	print(valsPerSpect)
+	#print(valsPerSpect)
 	ll[["valsPerSpect"]] <- valsPerSpect
 	nnn <- "ppm"
 	print(nnn)
-	print(ppm)
+	#print(ppm)
 	ll[["ppm"]] <- ppm
 	nnn <- "peakwidth"
 	print(nnn)
-	print(peakwidth)
+	#print(peakwidth)
 	ll[["peakwidth"]] <- peakwidth
 	nnn <- "snthresh"
 	print(nnn)
-	print(snthresh)
+	#print(snthresh)
 	ll[["snthresh"]] <- snthresh
 	nnn <-"prefilter"
 	print(nnn)
-	print(prefilter)
+	#print(prefilter)
 	ll[["prefilter"]] <- prefilter
 	nnn <- "noise"
 	print(nnn)
-	print(noise)
+	#print(noise)
 	ll[["noise"]] <- noise
         .centWave_orig(mz = mz, int = int, scantime = scantime,
                        valsPerSpect = valsPerSpect, ppm = ppm, peakwidth = peakwidth,
@@ -207,27 +207,27 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
 	ll[["scantimenew"]] <- scantime
 	nnn <- "valsPerSpect"
 	print(nnn)
-	print(valsPerSpect)
+	#print(valsPerSpect)
 	ll[["valsPerSpectnew"]] <- valsPerSpect
 	nnn <- "ppm"
 	print(nnn)
-	print(ppm)
+	#print(ppm)
 	ll[["ppm"]] <- ppm
 	nnn <- "peakwidth"
 	print(nnn)
-	print(peakwidth)
+	#print(peakwidth)
 	ll[["peakwidthnew"]] <- peakwidth
 	nnn <- "snthresh"
 	print(nnn)
-	print(snthresh)
+	#print(snthresh)
 	ll[["snthreshnew"]] <- snthresh
 	nnn <-"prefilter"
 	print(nnn)
-	print(prefilter)
+	#print(prefilter)
 	ll[["prefilternew"]] <- prefilter
 	nnn <- "noise"
 	print(nnn)
-	print(noise)
+	#print(noise)
 	ll[["noisenew"]] <- noise
         .centWave_new(mz = mz, int = int, scantime = scantime,
                       valsPerSpect = valsPerSpect, ppm = ppm, peakwidth = peakwidth,
