@@ -331,7 +331,8 @@ do_findChromPeaks_centWave <- function(mz, int, scantime, valsPerSpect,
     print(noiserange)
     ll[["noiserange"]] <- noiserange
     maxGaussOverlap <- 0.5
-    minPtsAboveBaseLine <- max(4, minPeakWidth - 2)
+    #minPtsAboveBaseLine <- max(4, minPeakWidth - 2)
+    minPtsAboveBaseLine <- 4
     minCentroids <- minPtsAboveBaseLine
     nnn <- "minCentroids is "
     print(nnn)
